@@ -9,6 +9,7 @@ public class BrowserDriver {
 
     public static WebDriver getCurrentDriver() {
         if (webDriver == null) {
+            System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver-mac");
             webDriver = new FirefoxDriver(new FirefoxProfile());
         }
         return webDriver;

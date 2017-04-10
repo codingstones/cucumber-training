@@ -12,11 +12,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.util.concurrent.TimeUnit;
 
 
 public class SearchSteps {
@@ -58,4 +55,10 @@ public class SearchSteps {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("resultStats")));
     }
 
+    @Then("^\"(.*?)\" message is in the page$")
+    public void are_presented_in_the_page(String text) throws Throwable {
+        WebDriverWait wait = new WebDriverWait(webDriver, 5);
+        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("body"), text));
+
+    }
 }

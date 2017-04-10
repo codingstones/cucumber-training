@@ -6,7 +6,9 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import static org.junit.Assert.fail;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -51,14 +53,22 @@ public class SearchSteps {
 
     @Then("^some results are presented in the page$")
     public void some_results_are_presented_in_the_page() throws Throwable {
-        WebDriverWait wait = new WebDriverWait(webDriver, 5);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("resultStats")));
+        WebDriverWait wait = new WebDriverWait(webDriver, 3);
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("resultStats")));
+        }catch (TimeoutException exception){
+            fail("No results in the page");
+        }
     }
 
     @Then("^\"(.*?)\" message is in the page$")
     public void are_presented_in_the_page(String text) throws Throwable {
-        WebDriverWait wait = new WebDriverWait(webDriver, 5);
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("body"), text));
+        WebDriverWait wait = new WebDriverWait(webDriver, 3);
+        try {
+            wait.until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("body"), text));
+        }catch (TimeoutException exception){
+            fail(text + " not found in the page");
+        }
 
     }
 }

@@ -1,4 +1,4 @@
-package com.codingstones.bdd.steps;
+package com.codingstones.bdd.sample1.calculator.steps;
 
 import com.codingstones.bdd.Calculator;
 import cucumber.api.java.Before;

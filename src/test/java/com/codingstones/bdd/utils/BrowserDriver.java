@@ -19,8 +19,4 @@ public class BrowserDriver {
         getCurrentDriver().quit();
         webDriver = null;
     }
-
-    public static void toUrl(String url){;
-        getCurrentDriver().get(url);
-    }
 }

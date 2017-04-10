@@ -26,14 +26,14 @@ public class CartSteps {
     @Given("^an empty cart$")
     public void an_empty_cart() throws Throwable {
         System.out.println("Well.. the cart is empty for each driver instance ;)");
-        BrowserDriver.toUrl("http://www.bichomania.es/cart");
+        BrowserDriver.getCurrentDriver().get("http://www.bichomania.es/cart");
         List lineItems = BrowserDriver.getCurrentDriver().findElements(By.id("line_items"));
         assertEquals(0, lineItems.size());
     }
 
     @Given("^I am looking for a dog product$")
     public void i_am_looking_for_a_dog_product() throws Throwable {
-        BrowserDriver.toUrl("http://www.bichomania.es/t/categorias/perros");
+        BrowserDriver.getCurrentDriver().get("http://www.bichomania.es/t/categorias/perros");
         WebElement productAnchor = BrowserDriver.getCurrentDriver().findElement(By.cssSelector("div.product-item a"));
         productAnchor.click();
 

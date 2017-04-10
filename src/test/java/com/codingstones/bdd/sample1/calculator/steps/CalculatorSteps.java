@@ -27,8 +27,8 @@ public class CalculatorSteps {
         calculator.sum(arg1, arg2);
     }
 
-    @Then("^the result should be (\\d+)$")
-    public void the_result_should_be(int arg1) throws Throwable {
+    @Then("^the result is (\\d+)$")
+    public void the_result_is(int arg1) throws Throwable {
         assertEquals(arg1, calculator.currentValue());
     }
 

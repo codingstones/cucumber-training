@@ -1,4 +1,4 @@
-package com.codingstones.bdd.sample2.vat;
+package com.codingstones.bdd.sample2.vat.steps;
 
 import com.codingstones.bdd.VATCalculator;
 import cucumber.api.CucumberOptions;
